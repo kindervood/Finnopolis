@@ -30,7 +30,7 @@ def analyze():
 @app.route('/find')
 def find():
     body = request.get_json()
-    res = find_face_in_base(body['img1'])
+    res = find_face_in_base(body['address1'])
 
     return jsonify(res)
 
@@ -38,7 +38,7 @@ def find():
 @app.route('/getsimilar')
 def get_similar():
     body = request.get_json()
-    res = get_similar_faces(body['img1'], body['img2'])
+    res = get_similar_faces(body['address1'], body['address2'])
 
     return jsonify(res)
 
@@ -47,7 +47,7 @@ def get_similar():
 def check():
     body = request.get_json()
 
-    frame = cv2.imread(body['img1'])
+    frame = cv2.imread(body['address1'])
     frame = imutils.resize(frame, width=400)
 
     (locs, preds) = detect_and_predict_mask(frame, faceNet, maskNet)
