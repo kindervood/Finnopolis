@@ -22,7 +22,7 @@ app = Flask(__name__)
 @app.route('/analyze')
 def analyze():
     body = request.get_json()
-    res = face_analyze(body['img1'])
+    res = face_analyze(body['address1'])
 
     return jsonify(res)
 
